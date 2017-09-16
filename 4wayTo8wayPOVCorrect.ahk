@@ -1,11 +1,12 @@
 ;------ Configuration -------
-TargetGames := ["Doom`, the Roguelike", "Tales of Maj'Eyal: Age of Ascendancy"]
+TargetGames := ["Doom`, the Roguelike", "Tales of Maj'Eyal: Age of Ascendancy", "Cogmind*"]
 InputKeys := {"Up": "w", "Down": "s", "Left": "a", "Right": "d"}
 OutputKeys := {"North": "w", "South": "s", "West": "a", "East": "d", "NW": "Home", "SW": "End", "NE": "PgUp", "SE": "PgDn"}
 BufferDelay := 67
 KeyReleaseSendsEarly := true
 ;----------------------------
 
+SetTitleMatchMode, Regex
 
 
 SentKeys := 0
@@ -20,8 +21,8 @@ for index, game in TargetGames
 	Hotkey, IfWinActive, %game%
 	for inkey, val in InputKeys
 	{
-		Hotkey, $%val%, HotkeySetupDown
-		Hotkey, $%val% UP, HotkeySetupUp
+		Hotkey, *$%val%, HotkeySetupDown
+		Hotkey, *$%val% UP, HotkeySetupUp
 	}
 }
 
@@ -108,10 +109,10 @@ KeyCheck()
 				;~ Send, {%Key% down}
 				;~ Send, {%Key% up}
 			;~ }
-				Send, {%Key% down}
+				Send, {Blind}{%Key% down}
 			else ; ...or up.
 				;~ Send, {Up}
-				Send, {%Key% up}
+				Send, {Blind}{%Key% up}
 		}
 	}
 	SetKeyDelay -1  ; Avoid delays between keystrokes.
@@ -170,9 +171,11 @@ HandleKeys(Key, Pressed)
 			{			
 				for OutKey, KeyState in OutputKeys
 				{
-					Send, {%OutKey% up} ;- Precaution in case KeyCheck isn't called sufficiently and something gets locked up
+					Send, {Blind}{%OutKey% up} ;- Precaution in case KeyCheck isn't called sufficiently and 
+
+something gets locked up
 				}
-				Send, %KeyToSend%
+				Send, {Blind}%KeyToSend%
 			}	
 		}
 	}
