@@ -171,9 +171,7 @@ HandleKeys(Key, Pressed)
 			{			
 				for OutKey, KeyState in OutputKeys
 				{
-					Send, {Blind}{%OutKey% up} ;- Precaution in case KeyCheck isn't called sufficiently and 
-
-something gets locked up
+					Send, {Blind}{%OutKey% up} ;- Precaution in case KeyCheck isn't called sufficiently and something gets locked up
 				}
 				Send, {Blind}%KeyToSend%
 			}	
