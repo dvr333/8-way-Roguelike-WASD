@@ -1,12 +1,10 @@
 ;------ Configuration -------
-TargetGames := ["Doom`, the Roguelike", "Tales of Maj'Eyal: Age of Ascendancy", "Cogmind.*"]
+TargetGames := ["Doom`, the Roguelike", "Tales of Maj'Eyal: Age of Ascendancy", "ahk_exe COGMIND.exe"]
 InputKeys := {"Up": "w", "Down": "s", "Left": "a", "Right": "d"}
 OutputKeys := {"North": "w", "South": "s", "West": "a", "East": "d", "NW": "Home", "SW": "End", "NE": "PgUp", "SE": "PgDn"}
 BufferDelay := 67
 KeyReleaseSendsEarly := true
 ;----------------------------
-
-SetTitleMatchMode, Regex
 
 
 SentKeys := 0
@@ -27,12 +25,12 @@ for index, game in TargetGames
 }
 
 HotkeySetupDown:
-StringTrimLeft, hotkeyKey, A_ThisHotkey, 1
+StringTrimLeft, hotkeyKey, A_ThisHotkey, 2
 HandleKeys(hotkeyKey, true)
 return
 
 HotkeySetupUp:
-StringTrimLeft, hotkeyKeyUP, A_ThisHotkey, 1
+StringTrimLeft, hotkeyKeyUP, A_ThisHotkey, 2
 StringSplit, hotkeyKeyParts, hotkeyKeyUP, " "
 HandleKeys(hotkeyKeyParts1, false)
 return
@@ -173,7 +171,7 @@ HandleKeys(Key, Pressed)
 				{
 					Send, {Blind}{%OutKey% up} ;- Precaution in case KeyCheck isn't called sufficiently and something gets locked up
 				}
-				Send, {Blind}%KeyToSend%
+				Send, {Blind}{%KeyToSend%}
 			}	
 		}
 	}
