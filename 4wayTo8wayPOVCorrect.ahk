@@ -1,5 +1,5 @@
 ;------ Configuration -------
-TargetGames := ["Doom`, the Roguelike", "Tales of Maj'Eyal: Age of Ascendancy", "Cogmind*"]
+TargetGames := ["Doom`, the Roguelike", "Tales of Maj'Eyal: Age of Ascendancy", "Cogmind.*"]
 InputKeys := {"Up": "w", "Down": "s", "Left": "a", "Right": "d"}
 OutputKeys := {"North": "w", "South": "s", "West": "a", "East": "d", "NW": "Home", "SW": "End", "NE": "PgUp", "SE": "PgDn"}
 BufferDelay := 67
