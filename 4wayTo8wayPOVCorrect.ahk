@@ -146,7 +146,7 @@ HandleKeys(Key, Pressed)
 			else
 			{
 				WaitingForKeys := true
-				SetTimer ReleaseBuffer, % BufferDelay / 2
+				SetTimer ReleaseBuffer, % BufferDelay
 			}
 		}
 		else if (KeyReleaseSendsEarly and LastKey = Key) ;Released with only WaitingForKeys
